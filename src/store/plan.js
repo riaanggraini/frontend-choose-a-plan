@@ -5,18 +5,20 @@ class PlanStore {
   plans = [];
   features = [];
   error = null;
-  pendingRequests = 0;
+  success = null;
 
   constructor() {
     makeObservable(this, {
       plans: observable,
       error: observable,
       features: observable,
-      pendingRequests: observable,
+      success: observable,
       allPlans: computed,
       allFeatures: computed,
+      successMessage: computed,
       getPlans: action,
       getPlanFeatures: action,
+      suscribePlan: action,
     });
   }
 
@@ -52,7 +54,7 @@ class PlanStore {
 
       this.plans = result;
     } catch (error) {
-      this.error = error;
+      this.error = error.response.data.message;
     }
   };
 
@@ -61,7 +63,17 @@ class PlanStore {
       const response = await api.plan.fetchAllFeatures();
       this.features = response.data.data;
     } catch (error) {
-      this.error = error;
+      this.error = error.response.data.message;
+    }
+  };
+
+  suscribePlan = async (id) => {
+    try {
+      const data = { plan_id: id };
+      const resp = await api.plan.subscribePlan(data);
+      this.success = resp.data.message;
+    } catch (error) {
+      this.error = error.response.data.message;
     }
   };
 
@@ -71,6 +83,14 @@ class PlanStore {
 
   get allFeatures() {
     return this.features;
+  }
+
+  get errorMessage() {
+    return this.error;
+  }
+
+  get successMessage() {
+    return this.success;
   }
 }
 
