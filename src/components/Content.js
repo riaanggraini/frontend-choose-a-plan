@@ -51,6 +51,10 @@ const Content = observer(({ store }) => {
       <Container>
         {errors && (
           <div>
+            {
+              (store.planStore.getErrorType,
+              store.planStore.getErrorType !== "authentication_error")
+            }
             <Row className="justify-content-md-center">
               <Col md="auto">
                 <ErrorSnackBar alertShow variant="danger" message={errors} />
