@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+## Pre run the project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+before the steps, make sure you have installed node in your local.
+
+- make sure you are in the directory, by ``cd project name``.
+- install the dependencies by``npm intall``.
+- copy``.env.example`` and rename it into ``.env``, change value as needed.
 
 ## Available Scripts
 
