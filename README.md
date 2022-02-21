@@ -4,7 +4,7 @@ before the steps, make sure you have installed node in your local.
 
 - make sure you are in the directory, by ``cd project name``.
 - install the dependencies by``npm intall``.
-- copy``.env.example`` and rename it into ``.env``, change value as needed.
+- copy``src/config.js.example`` and rename it into ``src/config.js``, change value as needed.
 
 ## Available Scripts
 
